@@ -43,10 +43,10 @@
     <param name="interpolation" value="0" />
   </node>
   <!-- Convert depth from mm (in uint16) to meters -->
-  <!--node pkg="nodelet" type="nodelet" name="convert_metric" args="load depth_image_proc/convert_metric standalone_nodelet">
+  <node pkg="nodelet" type="nodelet" name="convert_metric" args="load depth_image_proc/convert_metric standalone_nodelet">
     <remap from="image_raw" to="$(arg depReg_imgrect)_raw"/>
     <remap from="image" to="$(arg depReg_imgrect)"/>
-  </node-->
+  </node>
   <!-- 
   $(arg depReg_imgrect)_raw - Depth Rectified Image in mm.
   $(arg depReg_imgrect) - Depth Rectified Image in meters
@@ -59,7 +59,7 @@
   <node pkg="nodelet" type="nodelet" name="register" args="load depth_image_proc/register standalone_nodelet">
     <remap from="rgb/camera_info"   to="$(arg rgb_camera_info)"/>
     <remap from="depth/camera_info" to="$(arg depth_camera_info)"/>
-    <remap from="depth/image_rect"  to="$(arg depReg_imgrect)_raw"/>
+    <remap from="depth/image_rect"  to="$(arg depReg_imgrect)"/>
 
     <remap from="depth_registered/image_rect"  to="$(arg dep_registered_imgrect)"/>
     <remap from="depth_registered/camera_info"  to="$(arg dep_registered_camera_info)"/>
